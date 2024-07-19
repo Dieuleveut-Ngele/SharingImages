@@ -4,5 +4,5 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 
 export const routes: Routes = [
     { path: 'shareimages', component: ShareImageListComponent },
-    { path: '', component: LandingPageComponent }
+    { path: '', component: LandingPageComponent },
 ];
