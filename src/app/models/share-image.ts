@@ -1,3 +1,5 @@
+import { SnapType } from "./share-type.type";
+
 export class ShareImage {
 
     location?: string;
@@ -21,6 +23,14 @@ export class ShareImage {
 
     removeShare(): void{
         this.snaps --
+    }
+
+    snap(snapType: SnapType) {
+        if (snapType === 'snap') {
+          this.addShare();
+        } else if (snapType === 'unSnap') {
+          this.removeShare();
+        }
     }
 
     setLocation(location: string): void {

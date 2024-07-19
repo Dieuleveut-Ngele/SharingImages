@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ShareImage } from '../models/share-image';
+import { SnapType } from '../models/share-type.type';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +34,23 @@ export class ShareImagesService {
     ]
     getShareImages(): ShareImage[] {
         return [...this.shareImgs];
-    }  
+    }
+    
+    snapShareImageById(shareImgeId: string, snapType: SnapType): void {
+        const foundShareImage = this.shareImgs.find(shareImge => shareImge.id === shareImgeId);
+        if (!foundShareImage) {
+          throw new Error('ShareImage not found!');
+        }
+        foundShareImage.addShare();
+    }
+
+    unSnapShareImageById(shareImgeId: string, snapType: SnapType): void {
+        const foundShareImage = this.shareImgs.find(shareImge => shareImge.id === shareImgeId);
+        if (!foundShareImage) {
+          throw new Error('ShareImage not found!');
+        }
+        foundShareImage.removeShare();
+    }
 }  
 
 

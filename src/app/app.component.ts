@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ShareImageListComponent } from './share-image-list/share-image-list.component';
 import { HeaderComponent } from './header/header.component';
+import { RouterOutlet } from '@angular/router';
 
 
 @Component({
@@ -8,14 +8,13 @@ import { HeaderComponent } from './header/header.component';
   standalone: true,
   imports: [
     HeaderComponent,
-    ShareImageListComponent
+    RouterOutlet
     
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent{
-
   
 }
 
