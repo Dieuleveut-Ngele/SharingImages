@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ShareImage } from '../models/share-image';
-import { DatePipe, LowerCasePipe, NgClass, NgStyle, TitleCasePipe, UpperCasePipe } from '@angular/common';
+import { CurrencyPipe, DatePipe, LowerCasePipe, NgClass, NgStyle, TitleCasePipe, UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-share-image',
@@ -11,7 +11,8 @@ import { DatePipe, LowerCasePipe, NgClass, NgStyle, TitleCasePipe, UpperCasePipe
     LowerCasePipe,
     UpperCasePipe,
     TitleCasePipe,
-    DatePipe
+    DatePipe,
+    CurrencyPipe
   ],
   templateUrl: './share-image.component.html',
   styleUrl: './share-image.component.scss'
@@ -22,6 +23,7 @@ export class ShareImageComponent implements OnInit {
   
   snapButtonText!: string;
   userHasSnapped!: Boolean;
+  currencyNumber = 0.336;
 
 
   ngOnInit(): void {
