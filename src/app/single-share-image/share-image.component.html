@@ -1,0 +1,22 @@
+
+<div class="face-snap-card" [ngClass]="{ snapped: userHasSnapped }">
+    <p>{{ currencyNumber | currency }}</p>
+    <h2>{{ shareImge.title | titlecase}}</h2>
+    @if (shareImge.location) {
+        <p>Localisation : {{ shareImge.location }}</p>
+    } @else {
+        <p>Localisation non spécifiée</p>
+    }
+    <img [src]="shareImge.imageUrl" [alt]="shareImge.title">
+    <p>{{ shareImge.description }}</p>
+    <p>ShareImage créée le {{ shareImge.createdAt | date:'d MMMM YYYY, à HH:mm' }}</p>
+    <p>
+        <button (click)="onSnap()">{{ snapButtonText }}</button>
+        <span [ngStyle]="{ color: 'rgb(0, ' + shareImge.snaps + ', 0)' }">👍 {{ shareImge.snaps }}</span>
+      </p>
+  </div> 
+
+
+
+  
+
