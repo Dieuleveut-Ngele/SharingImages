@@ -2,6 +2,7 @@
 <div class="face-snap-card" [ngClass]="{ snapped: userHasSnapped }">
     <p>{{ currencyNumber | currency }}</p>
     <h2>{{ shareImge.title | titlecase}}</h2>
+    <a routerLink="/shareimages">BACK</a>
     @if (shareImge.location) {
         <p>Localisation : {{ shareImge.location }}</p>
     } @else {

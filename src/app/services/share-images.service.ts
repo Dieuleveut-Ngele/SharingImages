@@ -35,13 +35,18 @@ export class ShareImagesService {
     getShareImages(): ShareImage[] {
         return [...this.shareImgs];
     }
+
+    getShareImageById (shareImgeId: string) {
+      const foundShareImage = this.shareImgs.find(shareImge => shareImge.id === shareImgeId);
+      if (!foundShareImage) {
+        throw new Error('ShareImage not found!');
+      }
+      return foundShareImage;
+    }
     
     snapShareImageById(shareImgeId: string, snapType: SnapType): void {
-        const foundShareImage = this.shareImgs.find(shareImge => shareImge.id === shareImgeId);
-        if (!foundShareImage) {
-          throw new Error('ShareImage not found!');
-        }
-        foundShareImage.addShare();
+        const shareImge = this.getShareImageById(shareImgeId)
+        shareImge.snap(snapType);
     }
 
     unSnapShareImageById(shareImgeId: string, snapType: SnapType): void {

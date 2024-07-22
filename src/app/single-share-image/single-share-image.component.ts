@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ShareImage } from '../models/share-image';
 import { CurrencyPipe, DatePipe, LowerCasePipe, NgClass, NgStyle, TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { ShareImagesService } from '../services/share-images.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-single-share-image',
@@ -14,7 +14,8 @@ import { ActivatedRoute } from '@angular/router';
     UpperCasePipe,
     TitleCasePipe,
     DatePipe,
-    CurrencyPipe
+    CurrencyPipe,
+    RouterLink
   ],
   templateUrl: './single-share-image.component.html',
   styleUrl: './single-share-image.component.scss'
@@ -30,10 +31,8 @@ export class SingleShareImageComponent implements OnInit {
     private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.snapButtonText = 'Oh Snap!';
-    this.userHasSnapped = false;
-
-    const shareImgeId = this.route.snapshot.params['id'];
+    this.prepareInterface();
+    this.getShareImage();
   }
 
   onSnap(): void {
@@ -54,6 +53,16 @@ export class SingleShareImageComponent implements OnInit {
     this.shareImagesService.snapShareImageById(this.shareImge.id, 'snap');
     this.snapButtonText = 'Oops, unSnap!';
     this.userHasSnapped = true;
+  }
+
+  private prepareInterface() {
+    this.snapButtonText = 'Oh Snap!';
+    this.userHasSnapped = false;
+  }
+
+  private getShareImage() {
+    const shareImgeId = this.route.snapshot.params['id'];
+    this.shareImge = this.shareImagesService.getShareImageById(shareImgeId);
   }
 }
 
